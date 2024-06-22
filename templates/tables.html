@@ -1,0 +1,1351 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SIA-Tables</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="../static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="../static/css/sb-admin-2.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+
+    <style>
+        /* Ajusta la posición horizontal de la barra de búsqueda */
+        #searchInput1 {
+            margin-left: auto;
+            margin-right: 0;
+        }
+        #searchInput2 {
+            margin-left: auto;
+            margin-right: 0;
+        }
+        #searchInput3 {
+            margin-left: auto;
+            margin-right: 0;
+        }
+        #searchInput4 {
+            margin-left: auto;
+            margin-right: 0;
+        }
+        #searchInput5 {
+            margin-left: auto;
+            margin-right: 0;
+        }
+        #searchInput6 {
+            margin-left: auto;
+            margin-right: 0;
+        }
+        #searchInput7 {
+            margin-left: auto;
+            margin-right: 0;
+        }
+        #searchInput8 {
+            margin-left: auto;
+            margin-right: 0;
+        }
+        #searchInput9 {
+            margin-left: auto;
+            margin-right: 0;
+        }
+        #searchInput10 {
+            margin-left: auto;
+            margin-right: 0;
+        }
+        #searchInput11 {
+            margin-left: auto;
+            margin-right: 0;
+        }
+        #searchInput12 {
+            margin-left: auto;
+            margin-right: 0;
+        }
+    </style>
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-laugh-wink"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">Tablas de Informacion</div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="index.html">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Complementos
+            </div>
+
+            <!-- Nav Item - Charts -->
+            <li class="nav-item">
+                <a class="nav-link" href="charts.html">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Charts</span></a>
+            </li>
+
+            <!-- Nav Item - Tables -->
+            <li class="nav-item">
+                <a class="nav-link" href="tables.html">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Tables</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">                    <!-- Texto personalizado -->
+                    <!-- Texto personalizado -->
+                    <div class="navbar-brand" style="color: blue;">Tablas</div>
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto"></ul>
+                </nav>
+                <!-- End of Topbar -->
+
+
+                <!-- /.Tabla empleados-->
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <a id="exportCSV1" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left: auto; margin-right: 0;">
+                            <i class="fas fa-download fa-sm text-white-50"></i> Exportar a CSV
+                        </a>
+                    </div>                    
+
+                    <!-- Content Row -->
+                    <div class="row">
+
+                        <!-- Para filtrar -->
+                        <label for="rowSelect">Mostrar: &nbsp;</label>
+                        <select id="rowSelect1">
+                            <option value="-1">Todo</option>
+                            <option value="10">10 filas</option>
+                            <option value="25">25 filas</option>
+                            <option value="50">50 filas</option>
+                        </select>
+                    
+                        <!-- Para buscar -->
+                        <input type="text" id="searchInput1" placeholder="Buscar...">
+                    </div>
+
+                    <div style="height: 10px;"></div> <!-- Espacio en blanco -->
+
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-6">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Informacion de Empleados</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive"> <!-- Agregamos la clase "table-responsive" -->
+                                        <table class='table' id="dataTable1">
+                                            <thead>
+                                                <tr>
+                                                {% for column in columns_emp %}
+                                                <th scope="col">{{ column }}</th>
+                                                {% endfor %}
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for fila in df_emp.iterrows()%}
+                                                <tr>
+                                                {% for columna in columns_emp %}
+                                                <td>{{ fila[1][columna] }}</td>
+                                                {% endfor %}
+                                                </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>            
+                    </div>
+                </div>
+                <!-- /.container-fluid -->
+
+                <hr style="border-top: 4px solid #ccc; margin: 20px 0;"> <!-- Línea separadora -->
+
+                <!-- /.Tabla Top 10 mas vendidos -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <a id="exportCSV2" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left: auto; margin-right: 0;">
+                            <i class="fas fa-download fa-sm text-white-50"></i> Exportar a CSV
+                        </a>
+                    </div>                    
+
+                    <!-- Content Row -->
+                    <div class="row">
+
+                        <!-- Para filtrar -->
+                        <label for="rowSelect">Mostrar: &nbsp;</label>
+                        <select id="rowSelect2">
+                            <option value="-1">Todo</option>
+                            <option value="10">10 filas</option>
+                            <option value="25">25 filas</option>
+                            <option value="50">50 filas</option>
+                        </select>
+                    
+                        <!-- Para buscar -->
+                        <input type="text" id="searchInput2" placeholder="Buscar...">
+                    </div>
+
+                    <div style="height: 10px;"></div> <!-- Espacio en blanco -->
+
+                    <div class="col-xl-6 col-lg-5">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Top 10 Productos Más Vendidos</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable2" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>Nombre del Producto</th>
+                                                <th>Total de Ventas</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for producto in productos_vendidos %}
+                                            <tr>
+                                                <td>{{ producto[0] }}</td>
+                                                <td>{{ producto[1] }}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr style="border-top: 4px solid #ccc; margin: 20px 0;"> <!-- Línea separadora -->
+
+                <!-- /.Tabla Top 10 mas solicitados -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <a id="exportCSV3" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left: auto; margin-right: 0;">
+                            <i class="fas fa-download fa-sm text-white-50"></i> Exportar a CSV
+                        </a>
+                    </div>      
+
+                    <!-- Content Row -->
+                    <div class="row">
+
+                        <!-- Para filtrar -->
+                        <label for="rowSelect">Mostrar: &nbsp;</label>
+                        <select id="rowSelect3">
+                            <option value="-1">Todo</option>
+                            <option value="10">10 filas</option>
+                            <option value="25">25 filas</option>
+                            <option value="50">50 filas</option>
+                        </select>
+                    
+                        <!-- Para buscar -->
+                        <input type="text" id="searchInput3" placeholder="Buscar...">
+                    </div>
+
+                    <div style="height: 10px;"></div> <!-- Espacio en blanco -->
+
+                    <div class="col-xl-6 col-lg-5">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Top 10 Productos Mas Solicitados</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable3" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>Nombre del Producto</th>
+                                                <th>Total de Solicitudes</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for producto in productos_mas_solicitados %}
+                                            <tr>
+                                                <td>{{ producto[0] }}</td>
+                                                <td>{{ producto[1] }}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr style="border-top: 4px solid #ccc; margin: 20px 0;"> <!-- Línea separadora -->
+
+                <!-- /.Tabla Top 10 menos solicitados -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <a id="exportCSV4" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left: auto; margin-right: 0;">
+                            <i class="fas fa-download fa-sm text-white-50"></i> Exportar a CSV
+                        </a>
+                    </div>      
+
+                    <!-- Content Row -->
+                    <div class="row">
+
+                        <!-- Para filtrar -->
+                        <label for="rowSelect">Mostrar: &nbsp;</label>
+                        <select id="rowSelect4">
+                            <option value="-1">Todo</option>
+                            <option value="10">10 filas</option>
+                            <option value="25">25 filas</option>
+                            <option value="50">50 filas</option>
+                        </select>
+                    
+                        <!-- Para buscar -->
+                        <input type="text" id="searchInput4" placeholder="Buscar...">
+                    </div>
+
+                    <div style="height: 10px;"></div> <!-- Espacio en blanco -->
+
+                <div class="col-xl-6 col-lg-5">
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Top 10 Productos Menos Solicitados</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable4" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Nombre del Producto</th>
+                                            <th>Total de Solicitudes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for producto in productos_menos_solicitados %}
+                                        <tr>
+                                            <td>{{ producto[0] }}</td>
+                                            <td>{{ producto[1] }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr style="border-top: 4px solid #ccc; margin: 20px 0;"> <!-- Línea separadora -->
+
+                <!-- /.Tabla Cantidad pedidos Cliente -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <a id="exportCSV5" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left: auto; margin-right: 0;">
+                            <i class="fas fa-download fa-sm text-white-50"></i> Exportar a CSV
+                        </a>
+                    </div>      
+
+                    <!-- Content Row -->
+                    <div class="row">
+
+                        <!-- Para filtrar -->
+                        <label for="rowSelect">Mostrar: &nbsp;</label>
+                        <select id="rowSelect5">
+                            <option value="-1">Todo</option>
+                            <option value="10">10 filas</option>
+                            <option value="25">25 filas</option>
+                            <option value="50">50 filas</option>
+                        </select>
+                    
+                        <!-- Para buscar -->
+                        <input type="text" id="searchInput5" placeholder="Buscar...">
+                    </div>
+
+                    <div style="height: 10px;"></div> <!-- Espacio en blanco -->
+
+                    <div class="col-xl-6 col-lg-5">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Cantidad de pedidos por cliente</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable5" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>Nombre del Clientes</th>
+                                                <th>Total de pedidos</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for producto in clientes_pedidos %}
+                                            <tr>
+                                                <td>{{ producto[0] }}</td>
+                                                <td>{{ producto[1] }}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr style="border-top: 4px solid #ccc; margin: 20px 0;"> <!-- Línea separadora -->
+
+                <!-- /.Tabla Cantidad pedidos pago -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <a id="exportCSV6" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left: auto; margin-right: 0;">
+                            <i class="fas fa-download fa-sm text-white-50"></i> Exportar a CSV
+                        </a>
+                    </div>      
+
+                    <!-- Content Row -->
+                    <div class="row">
+
+                        <!-- Para filtrar -->
+                        <label for="rowSelect">Mostrar: &nbsp;</label>
+                        <select id="rowSelect6">
+                            <option value="-1">Todo</option>
+                            <option value="10">10 filas</option>
+                            <option value="25">25 filas</option>
+                            <option value="50">50 filas</option>
+                        </select>
+                    
+                        <!-- Para buscar -->
+                        <input type="text" id="searchInput6" placeholder="Buscar...">
+                    </div>
+
+                    <div style="height: 10px;"></div> <!-- Espacio en blanco -->
+
+                    <div class="col-xl-6 col-lg-5">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Cantidad de pedidos por forma de pago</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable6" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>Forma de pago</th>
+                                                <th>Total de pedidos</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for producto in forma_pago %}
+                                            <tr>
+                                                <td>{{ producto[0] }}</td>
+                                                <td>{{ producto[1] }}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr style="border-top: 4px solid #ccc; margin: 20px 0;"> <!-- Línea separadora -->
+
+                <!-- /.Tabla Cantidad pedidos por año -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <a id="exportCSV7" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left: auto; margin-right: 0;">
+                            <i class="fas fa-download fa-sm text-white-50"></i> Exportar a CSV
+                        </a>
+                    </div>      
+
+                    <!-- Content Row -->
+                    <div class="row">
+
+                        <!-- Para filtrar -->
+                        <label for="rowSelect">Mostrar: &nbsp;</label>
+                        <select id="rowSelect7">
+                            <option value="-1">Todo</option>
+                            <option value="10">10 filas</option>
+                            <option value="25">25 filas</option>
+                            <option value="50">50 filas</option>
+                        </select>
+                    
+                        <!-- Para buscar -->
+                        <input type="text" id="searchInput7" placeholder="Buscar...">
+                    </div>
+
+                    <div style="height: 10px;"></div> <!-- Espacio en blanco -->
+
+                    <div class="col-xl-6 col-lg-5">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Cantidad de pedidos por año</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable7" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>Año</th>
+                                                <th>Total de pedidos</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for producto in pedidos_anio %}
+                                            <tr>
+                                                <td>{{ producto[0] }}</td>
+                                                <td>{{ producto[1] }}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr style="border-top: 4px solid #ccc; margin: 20px 0;"> <!-- Línea separadora -->
+
+                <!-- /.Tabla Cantidad pedidos por productos -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <a id="exportCSV8" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left: auto; margin-right: 0;">
+                            <i class="fas fa-download fa-sm text-white-50"></i> Exportar a CSV
+                        </a>
+                    </div>      
+
+                    <!-- Content Row -->
+                    <div class="row">
+
+                        <!-- Para filtrar -->
+                        <label for="rowSelect">Mostrar: &nbsp;</label>
+                        <select id="rowSelect8">
+                            <option value="-1">Todo</option>
+                            <option value="10">10 filas</option>
+                            <option value="25">25 filas</option>
+                            <option value="50">50 filas</option>
+                        </select>
+                    
+                        <!-- Para buscar -->
+                        <input type="text" id="searchInput8" placeholder="Buscar...">
+                    </div>
+
+                    <div style="height: 10px;"></div> <!-- Espacio en blanco -->
+
+                    <div class="col-xl-6 col-lg-5">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Cantidad de pedidos por producto</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable8" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>Producto</th>
+                                                <th>Total de pedidos</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for producto in pedidos_producto %}
+                                            <tr>
+                                                <td>{{ producto[0] }}</td>
+                                                <td>{{ producto[1] }}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr style="border-top: 4px solid #ccc; margin: 20px 0;"> <!-- Línea separadora -->
+
+                <!-- /.Tabla Cantidad ventas por categorias -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <a id="exportCSV9" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left: auto; margin-right: 0;">
+                            <i class="fas fa-download fa-sm text-white-50"></i> Exportar a CSV
+                        </a>
+                    </div>      
+
+                    <!-- Content Row -->
+                    <div class="row">
+
+                        <!-- Para filtrar -->
+                        <label for="rowSelect">Mostrar: &nbsp;</label>
+                        <select id="rowSelect9">
+                            <option value="-1">Todo</option>
+                            <option value="10">10 filas</option>
+                            <option value="25">25 filas</option>
+                            <option value="50">50 filas</option>
+                        </select>
+                    
+                        <!-- Para buscar -->
+                        <input type="text" id="searchInput9" placeholder="Buscar...">
+                    </div>
+
+                    <div style="height: 10px;"></div> <!-- Espacio en blanco -->
+
+                    <div class="col-xl-6 col-lg-5">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Cantidad de productos vendidos por categoría</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable9" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>Categoria</th>
+                                                <th>Total de productos</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for producto in productos_categoria %}
+                                            <tr>
+                                                <td>{{ producto[0] }}</td>
+                                                <td>{{ producto[1] }}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr style="border-top: 4px solid #ccc; margin: 20px 0;"> <!-- Línea separadora -->
+
+                <!-- /.Tabla Cantidad pedidos cliente 2021 -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <a id="exportCSV10" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left: auto; margin-right: 0;">
+                            <i class="fas fa-download fa-sm text-white-50"></i> Exportar a CSV
+                        </a>
+                    </div>      
+
+                    <!-- Content Row -->
+                    <div class="row">
+
+                        <!-- Para filtrar -->
+                        <label for="rowSelect">Mostrar: &nbsp;</label>
+                        <select id="rowSelect10">
+                            <option value="-1">Todo</option>
+                            <option value="10">10 filas</option>
+                            <option value="25">25 filas</option>
+                            <option value="50">50 filas</option>
+                        </select>
+                    
+                        <!-- Para buscar -->
+                        <input type="text" id="searchInput10" placeholder="Buscar...">
+                    </div>
+
+                    <div style="height: 10px;"></div> <!-- Espacio en blanco -->
+
+                    <div class="col-xl-6 col-lg-5">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Cantidad de pedidos por cliente en el año 2021</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable10" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>Cliente</th>
+                                                <th>Total de pedidos</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for producto in pedidos_cliente_2021 %}
+                                            <tr>
+                                                <td>{{ producto[0] }}</td>
+                                                <td>{{ producto[1] }}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr style="border-top: 4px solid #ccc; margin: 20px 0;"> <!-- Línea separadora -->
+
+                <!-- /.Tabla Cantidad productos proveedor -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <a id="exportCSV11" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left: auto; margin-right: 0;">
+                            <i class="fas fa-download fa-sm text-white-50"></i> Exportar a CSV
+                        </a>
+                    </div>      
+
+                    <!-- Content Row -->
+                    <div class="row">
+
+                        <!-- Para filtrar -->
+                        <label for="rowSelect">Mostrar: &nbsp;</label>
+                        <select id="rowSelect11">
+                            <option value="-1">Todo</option>
+                            <option value="10">10 filas</option>
+                            <option value="25">25 filas</option>
+                            <option value="50">50 filas</option>
+                        </select>
+                    
+                        <!-- Para buscar -->
+                        <input type="text" id="searchInput11" placeholder="Buscar...">
+                    </div>
+
+                    <div style="height: 10px;"></div> <!-- Espacio en blanco -->
+
+                    <div class="col-xl-6 col-lg-5">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Cantidad de productos que da el proveedor</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable11" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>Proveedor</th>
+                                                <th>Total de productos</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for producto in productos_proveedor %}
+                                            <tr>
+                                                <td>{{ producto[0] }}</td>
+                                                <td>{{ producto[1] }}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr style="border-top: 4px solid #ccc; margin: 20px 0;"> <!-- Línea separadora -->
+
+                <!-- /.Tabla Cantidad ventas mes 2021 -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <a id="exportCSV12" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="margin-left: auto; margin-right: 0;">
+                            <i class="fas fa-download fa-sm text-white-50"></i> Exportar a CSV
+                        </a>
+                    </div>      
+
+                    <!-- Content Row -->
+                    <div class="row">
+
+                        <!-- Para filtrar -->
+                        <label for="rowSelect">Mostrar: &nbsp;</label>
+                        <select id="rowSelect12">
+                            <option value="-1">Todo</option>
+                            <option value="10">10 filas</option>
+                            <option value="25">25 filas</option>
+                            <option value="50">50 filas</option>
+                        </select>
+                    
+                        <!-- Para buscar -->
+                        <input type="text" id="searchInput12" placeholder="Buscar...">
+                    </div>
+
+                    <div style="height: 10px;"></div> <!-- Espacio en blanco -->
+
+                    <div class="col-xl-6 col-lg-5">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Total de ventas por mes en el año 2021</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable12" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>Mes</th>
+                                                <th>Total de ventas</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for producto in ventas_mes %}
+                                            <tr>
+                                                <td>{{ producto[0] }}</td>
+                                                <td>{{ producto[1] }}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; El Alexis :v 2024</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="../static/vendor/jquery/jquery.min.js"></script>
+    <script src="../static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="../static/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="../static/js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="../static/vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="../static/js/demo/chart-area-demo.js"></script>
+    <script src="../static/js/demo/chart-pie-demo.js"></script>
+
+    <!-- Biblioteca FileSaver.js -->
+
+    <!-- Biblioteca FileSaver.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+
+    <!-- Código JavaScript para exportar a CSV tabla employees -->
+    <script>
+    document.getElementById('exportCSV1').addEventListener('click', function() {
+        // Obtener la tabla
+        var table = document.getElementById('dataTable1');
+        
+        // Crear un objeto CSV
+        var csv = [];
+        
+        // Iterar sobre las filas de la tabla
+        var rows = table.querySelectorAll('tr');
+        rows.forEach(function(row) {
+            var rowData = [];
+            // Iterar sobre las celdas de cada fila
+            row.querySelectorAll('td, th').forEach(function(cell) {
+                rowData.push(cell.innerText);
+            });
+            // Unir los datos de la fila con comas y agregar al objeto CSV
+            csv.push(rowData.join(','));
+        });
+        
+        // Convertir el objeto CSV en una cadena
+        var csvContent = csv.join('\n');
+        
+        // Crear un blob con los datos CSV
+        var blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8' });
+        
+        // Guardar el archivo CSV
+        saveAs(blob, 'employees_dep.csv');
+    });
+</script>
+
+<!-- Código JavaScript para exportar a CSV tabla top mas vendidos -->
+<script>
+    document.getElementById('exportCSV2').addEventListener('click', function() {
+        // Obtener la tabla
+        var table = document.getElementById('dataTable2');
+        
+        // Crear un objeto CSV
+        var csv = [];
+        
+        // Iterar sobre las filas de la tabla
+        var rows = table.querySelectorAll('tr');
+        rows.forEach(function(row) {
+            var rowData = [];
+            // Iterar sobre las celdas de cada fila
+            row.querySelectorAll('td, th').forEach(function(cell) {
+                rowData.push(cell.innerText);
+            });
+            // Unir los datos de la fila con comas y agregar al objeto CSV
+            csv.push(rowData.join(','));
+        });
+        
+        // Convertir el objeto CSV en una cadena
+        var csvContent = csv.join('\n');
+        
+        // Crear un blob con los datos CSV
+        var blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8' });
+        
+        // Guardar el archivo CSV
+        saveAs(blob, 'Top10_mas_vendidos.csv');
+    });
+</script>
+
+<!-- Código JavaScript para exportar a CSV tabla top mas solicitados -->
+<script>
+    document.getElementById('exportCSV3').addEventListener('click', function() {
+        // Obtener la tabla
+        var table = document.getElementById('dataTable3');
+        
+        // Crear un objeto CSV
+        var csv = [];
+        
+        // Iterar sobre las filas de la tabla
+        var rows = table.querySelectorAll('tr');
+        rows.forEach(function(row) {
+            var rowData = [];
+            // Iterar sobre las celdas de cada fila
+            row.querySelectorAll('td, th').forEach(function(cell) {
+                rowData.push(cell.innerText);
+            });
+            // Unir los datos de la fila con comas y agregar al objeto CSV
+            csv.push(rowData.join(','));
+        });
+        
+        // Convertir el objeto CSV en una cadena
+        var csvContent = csv.join('\n');
+        
+        // Crear un blob con los datos CSV
+        var blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8' });
+        
+        // Guardar el archivo CSV
+        saveAs(blob, 'Top10_mas_solicitados.csv');
+    });
+</script>
+
+<!-- Código JavaScript para exportar a CSV tabla top menos solicitados -->
+<script>
+    document.getElementById('exportCSV4').addEventListener('click', function() {
+        // Obtener la tabla
+        var table = document.getElementById('dataTable4');
+        
+        // Crear un objeto CSV
+        var csv = [];
+        
+        // Iterar sobre las filas de la tabla
+        var rows = table.querySelectorAll('tr');
+        rows.forEach(function(row) {
+            var rowData = [];
+            // Iterar sobre las celdas de cada fila
+            row.querySelectorAll('td, th').forEach(function(cell) {
+                rowData.push(cell.innerText);
+            });
+            // Unir los datos de la fila con comas y agregar al objeto CSV
+            csv.push(rowData.join(','));
+        });
+        
+        // Convertir el objeto CSV en una cadena
+        var csvContent = csv.join('\n');
+        
+        // Crear un blob con los datos CSV
+        var blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8' });
+        
+        // Guardar el archivo CSV
+        saveAs(blob, 'Top10_menos_solicitados.csv');
+    });
+</script>
+
+<!-- Código JavaScript para exportar a CSV tabla pedidos_clientes-->
+<script>
+    document.getElementById('exportCSV5').addEventListener('click', function() {
+        // Obtener la tabla
+        var table = document.getElementById('dataTable5');
+        
+        // Crear un objeto CSV
+        var csv = [];
+        
+        // Iterar sobre las filas de la tabla
+        var rows = table.querySelectorAll('tr');
+        rows.forEach(function(row) {
+            var rowData = [];
+            // Iterar sobre las celdas de cada fila
+            row.querySelectorAll('td, th').forEach(function(cell) {
+                rowData.push(cell.innerText);
+            });
+            // Unir los datos de la fila con comas y agregar al objeto CSV
+            csv.push(rowData.join(','));
+        });
+        
+        // Convertir el objeto CSV en una cadena
+        var csvContent = csv.join('\n');
+        
+        // Crear un blob con los datos CSV
+        var blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8' });
+        
+        // Guardar el archivo CSV
+        saveAs(blob, 'Pedidos_por_cliente.csv');
+    });
+</script>
+
+<!-- Código JavaScript para exportar a CSV tabla pedidos tipo pago-->
+<script>
+    document.getElementById('exportCSV6').addEventListener('click', function() {
+        // Obtener la tabla
+        var table = document.getElementById('dataTable6');
+        
+        // Crear un objeto CSV
+        var csv = [];
+        
+        // Iterar sobre las filas de la tabla
+        var rows = table.querySelectorAll('tr');
+        rows.forEach(function(row) {
+            var rowData = [];
+            // Iterar sobre las celdas de cada fila
+            row.querySelectorAll('td, th').forEach(function(cell) {
+                rowData.push(cell.innerText);
+            });
+            // Unir los datos de la fila con comas y agregar al objeto CSV
+            csv.push(rowData.join(','));
+        });
+        
+        // Convertir el objeto CSV en una cadena
+        var csvContent = csv.join('\n');
+        
+        // Crear un blob con los datos CSV
+        var blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8' });
+        
+        // Guardar el archivo CSV
+        saveAs(blob, 'Pedidos_por_forma_pago.csv');
+    });
+</script>
+
+<!-- Código JavaScript para exportar a CSV tabla pedidos año-->
+<script>
+    document.getElementById('exportCSV7').addEventListener('click', function() {
+        // Obtener la tabla
+        var table = document.getElementById('dataTable7');
+        
+        // Crear un objeto CSV
+        var csv = [];
+        
+        // Iterar sobre las filas de la tabla
+        var rows = table.querySelectorAll('tr');
+        rows.forEach(function(row) {
+            var rowData = [];
+            // Iterar sobre las celdas de cada fila
+            row.querySelectorAll('td, th').forEach(function(cell) {
+                rowData.push(cell.innerText);
+            });
+            // Unir los datos de la fila con comas y agregar al objeto CSV
+            csv.push(rowData.join(','));
+        });
+        
+        // Convertir el objeto CSV en una cadena
+        var csvContent = csv.join('\n');
+        
+        // Crear un blob con los datos CSV
+        var blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8' });
+        
+        // Guardar el archivo CSV
+        saveAs(blob, 'Pedidos_por_años.csv');
+    });
+</script>
+
+<!-- Código JavaScript para exportar a CSV tabla pedidos por productos-->
+<script>
+    document.getElementById('exportCSV8').addEventListener('click', function() {
+        // Obtener la tabla
+        var table = document.getElementById('dataTable8');
+        
+        // Crear un objeto CSV
+        var csv = [];
+        
+        // Iterar sobre las filas de la tabla
+        var rows = table.querySelectorAll('tr');
+        rows.forEach(function(row) {
+            var rowData = [];
+            // Iterar sobre las celdas de cada fila
+            row.querySelectorAll('td, th').forEach(function(cell) {
+                rowData.push(cell.innerText);
+            });
+            // Unir los datos de la fila con comas y agregar al objeto CSV
+            csv.push(rowData.join(','));
+        });
+        
+        // Convertir el objeto CSV en una cadena
+        var csvContent = csv.join('\n');
+        
+        // Crear un blob con los datos CSV
+        var blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8' });
+        
+        // Guardar el archivo CSV
+        saveAs(blob, 'Pedidos_por_productos.csv');
+    });
+</script>
+
+<!-- Código JavaScript para exportar a CSV tabla ventas por categorias-->
+<script>
+    document.getElementById('exportCSV9').addEventListener('click', function() {
+        // Obtener la tabla
+        var table = document.getElementById('dataTable9');
+        
+        // Crear un objeto CSV
+        var csv = [];
+        
+        // Iterar sobre las filas de la tabla
+        var rows = table.querySelectorAll('tr');
+        rows.forEach(function(row) {
+            var rowData = [];
+            // Iterar sobre las celdas de cada fila
+            row.querySelectorAll('td, th').forEach(function(cell) {
+                rowData.push(cell.innerText);
+            });
+            // Unir los datos de la fila con comas y agregar al objeto CSV
+            csv.push(rowData.join(','));
+        });
+        
+        // Convertir el objeto CSV en una cadena
+        var csvContent = csv.join('\n');
+        
+        // Crear un blob con los datos CSV
+        var blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8' });
+        
+        // Guardar el archivo CSV
+        saveAs(blob, 'productos_categorias.csv');
+    });
+</script>
+
+<!-- Código JavaScript para exportar a CSV tabla pedidos clientes 2021-->
+<script>
+    document.getElementById('exportCSV10').addEventListener('click', function() {
+        // Obtener la tabla
+        var table = document.getElementById('dataTable10');
+        
+        // Crear un objeto CSV
+        var csv = [];
+        
+        // Iterar sobre las filas de la tabla
+        var rows = table.querySelectorAll('tr');
+        rows.forEach(function(row) {
+            var rowData = [];
+            // Iterar sobre las celdas de cada fila
+            row.querySelectorAll('td, th').forEach(function(cell) {
+                rowData.push(cell.innerText);
+            });
+            // Unir los datos de la fila con comas y agregar al objeto CSV
+            csv.push(rowData.join(','));
+        });
+        
+        // Convertir el objeto CSV en una cadena
+        var csvContent = csv.join('\n');
+        
+        // Crear un blob con los datos CSV
+        var blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8' });
+        
+        // Guardar el archivo CSV
+        saveAs(blob, 'pedidos_cliente_2021.csv');
+    });
+</script>
+
+<!-- Código JavaScript para exportar a CSV tabla producto proveedor-->
+<script>
+    document.getElementById('exportCSV11').addEventListener('click', function() {
+        // Obtener la tabla
+        var table = document.getElementById('dataTable11');
+        
+        // Crear un objeto CSV
+        var csv = [];
+        
+        // Iterar sobre las filas de la tabla
+        var rows = table.querySelectorAll('tr');
+        rows.forEach(function(row) {
+            var rowData = [];
+            // Iterar sobre las celdas de cada fila
+            row.querySelectorAll('td, th').forEach(function(cell) {
+                rowData.push(cell.innerText);
+            });
+            // Unir los datos de la fila con comas y agregar al objeto CSV
+            csv.push(rowData.join(','));
+        });
+        
+        // Convertir el objeto CSV en una cadena
+        var csvContent = csv.join('\n');
+        
+        // Crear un blob con los datos CSV
+        var blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8' });
+        
+        // Guardar el archivo CSV
+        saveAs(blob, 'productos_proveedor.csv');
+    });
+</script>
+
+<!-- Código JavaScript para exportar a CSV tabla producto proveedor-->
+<script>
+    document.getElementById('exportCSV12').addEventListener('click', function() {
+        // Obtener la tabla
+        var table = document.getElementById('dataTable12');
+        
+        // Crear un objeto CSV
+        var csv = [];
+        
+        // Iterar sobre las filas de la tabla
+        var rows = table.querySelectorAll('tr');
+        rows.forEach(function(row) {
+            var rowData = [];
+            // Iterar sobre las celdas de cada fila
+            row.querySelectorAll('td, th').forEach(function(cell) {
+                rowData.push(cell.innerText);
+            });
+            // Unir los datos de la fila con comas y agregar al objeto CSV
+            csv.push(rowData.join(','));
+        });
+        
+        // Convertir el objeto CSV en una cadena
+        var csvContent = csv.join('\n');
+        
+        // Crear un blob con los datos CSV
+        var blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8' });
+        
+        // Guardar el archivo CSV
+        saveAs(blob, 'ventas_mes.csv');
+    });
+</script>
+
+<!-- DataTables -->
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+
+<!-- jQuery -->
+<script src="../static/vendor/jquery/jquery.min.js"></script>
+<!-- Bootstrap core JavaScript-->
+<script src="../static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="../static/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<script>
+    // Función para filtrar las filas de una tabla específica
+    function filterRows(tableBody, searchInput) {
+        const rows = tableBody.querySelectorAll('tr');
+        rows.forEach(row => {
+            row.style.display = 'none'; // Ocultar todas las filas inicialmente
+            // Verificar si alguna celda en la fila contiene el texto de búsqueda
+            Array.from(row.cells).some(cell => {
+                const searchText = cell.textContent.toLowerCase();
+                const searchValue = searchInput.value.toLowerCase();
+                if (searchText.includes(searchValue)) {
+                    row.style.display = ''; // Mostrar la fila si coincide con la búsqueda
+                    return true; // Terminar la iteración
+                }
+            });
+        });
+    }
+
+    // Función para cambiar el número de filas a mostrar de una tabla específica
+    function changeRowCount(tableBody, rowSelect) {
+        const selectedRowCount = parseInt(rowSelect.value);
+        const rows = tableBody.querySelectorAll('tr');
+        rows.forEach((row, index) => {
+            if (selectedRowCount === -1 || index < selectedRowCount) {
+                row.style.display = ''; // Mostrar las filas seleccionadas o todas si es -1
+            } else {
+                row.style.display = 'none'; // Ocultar las filas restantes
+            }
+        });
+    }
+
+    // Agregar eventos para cada tabla
+    for (let i = 1; i <= 12; i++) {
+        const rowSelect = document.getElementById(`rowSelect${i}`);
+        const searchInput = document.getElementById(`searchInput${i}`);
+        const tableBody = document.querySelector(`#dataTable${i} tbody`);
+
+        rowSelect.addEventListener('change', function() {
+            changeRowCount(tableBody, rowSelect);
+        });
+
+        searchInput.addEventListener('keyup', function() {
+            filterRows(tableBody, searchInput);
+        });
+    }
+</script>
+
+
+</body>
+
+</html>
